@@ -45,12 +45,18 @@ ul {
     width: 500px;
     margin: 2rem auto;
     padding: 0;
+	max-height: 45vh;
+	overflow-y: scroll;
+}
+
+#todo-list > li > span:first-of-type {
+	margin-right: auto;
 }
 
 .todo-item {
     display: flex;
     gap: 1rem;
-    padding: 0.5rem 0;
+    padding: 0.5rem 5px 0 0;
 }
 .close {
     color: red;
