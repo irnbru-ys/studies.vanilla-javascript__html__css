@@ -53,6 +53,10 @@ ul {
 	margin-right: auto;
 }
 
+/* #todo-list > li > span:last-of-type {
+	margin-right: auto;
+} */
+
 .todo-item {
     display: flex;
     gap: 1rem;
