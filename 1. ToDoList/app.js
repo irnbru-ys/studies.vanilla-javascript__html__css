@@ -32,7 +32,7 @@ function createUserOption(user) {
 function printTodo({id, userId, title, completed}) {
 	const li = document.createElement('li');
 	li.classList.add('todo-item');
-	li.setAttribute('id', id);
+	li.setAttribute('data-id', id);
 	li.innerHTML = `<span>${title} <br >by <b>${getUserName(userId)}</b></span>`;
 
 	const status = document.createElement('input');
@@ -43,11 +43,23 @@ function printTodo({id, userId, title, completed}) {
 	const close = document.createElement('span');
 	close.innerHTML = '&times;';
 	close.classList.add('close');
+	close.addEventListener('click', handleClose);
 
 	li.prepend(status);
 	li.append(close);
 
 	todoList.prepend(li);
+}
+
+function removeTodo(todoId) {
+	
+	todos = todos.filter(todo => todo.id !== todoId);
+	
+	const todo = todoList.querySelector(`[data-id="${todoId}"]`);
+	todo.querySelector('input').removeEventListener('change', handleTodoChange);  
+	todo.querySelector('.close').removeEventListener('click', handleClose);  
+
+	todo.remove();
 }
 
 // Event Logic
@@ -73,11 +85,17 @@ function handleSubmit(event) {
 }
 
 function handleTodoChange() {
-	const todoId = this.parentElement.getAttribute('id');
+	const todoId = this.parentElement.getAttribute('data-id');
 	const complete = this.checked;
 
 	toggleTodoComplete(todoId, complete);
 }
+
+ function handleClose() {
+	const todoId = this.parentElement.getAttribute('data-id');
+	console.log(todoId)
+	deleteTodo(todoId);
+ }
 
 // Async logic
 
@@ -118,4 +136,17 @@ async function toggleTodoComplete(todoId, completed) {
 		},
 	})
 
+}
+
+async function deleteTodo(todoId) {
+	const responce = await fetch(`https://jsonplaceholder.typicode.com/todos/${todoId}`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	if (responce.ok) {
+		removeTodo(todoId);
+	}
 }
