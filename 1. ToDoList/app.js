@@ -4,12 +4,14 @@
 
 const todoList = document.querySelector('#todo-list');
 const userSelect = document.querySelector('#user-todo');
+const form = document.querySelector('form');
 let todos = [];
 let users = [];
 
 // Attach Events
 
 document.addEventListener('DOMContentLoaded', initApp);
+form.addEventListener('submit', handleSubmit);
 
 // Basic Logic
 
@@ -60,6 +62,15 @@ function initApp() {
 })
 }
 
+function handleSubmit(event) {
+	event.preventDefault();
+	createTodo({
+		userId: Number(form.user.value),
+		title: form.todo.value,
+		completed: false,
+	})
+}
+
 // Async logic
 
 async function getAllTodos() {
@@ -75,3 +86,17 @@ async function getAllUsers() {
 
 	return data;
 } 
+
+async function createTodo(todo) {
+	const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
+		method: 'POST',
+		body: JSON.stringify(todo),
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	const todoId = await response.json();
+
+	printTodo(todoId);
+}
