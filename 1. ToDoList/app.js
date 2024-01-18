@@ -3,6 +3,7 @@
 // Globals
 
 const todoList = document.querySelector('#todo-list');
+const userSelect = document.querySelector('#user-todo');
 let todos = [];
 let users = [];
 
@@ -16,6 +17,14 @@ function getUserName(userId) {
 	const user = users.find(user => user.id === userId);
 
 	return user.name;
+}
+
+function createUserOption(user) {
+	const option = document.createElement('option');
+	option.value = user.id;
+	option.innerText = user.name;
+
+	userSelect.append(option);
 }
 
 function printTodo({id, userId, title, completed}) {
@@ -47,6 +56,7 @@ function initApp() {
 
 	// Отправить в разметку
 	todos.forEach(todo => printTodo(todo))
+	users.forEach(user => createUserOption(user));
 })
 }
 
