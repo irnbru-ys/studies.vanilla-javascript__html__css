@@ -1,0 +1,59 @@
+* {
+	box-sizing: border-box;
+}
+
+.output {
+	width: 300px;
+	margin: 30px 0 0 20px;
+}
+
+ol {
+	margin-top: 20px;
+	padding-left: 20px;
+}
+
+li:not(:first-child) {
+	margin-top: 25px;
+}
+
+
+.info {
+	padding: 5px;
+}
+
+.editer {
+	background-color: green;
+	max-width: 50px;
+	padding: 5px 10px;
+	color: white;
+	font-size: 0.8em;
+	margin: 0 5px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.delete {
+	background-color: red;
+	max-width: 50px;
+	padding: 5px 10px;
+	color: white;
+	font-size: 0.8em;
+	margin: 0 5px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.mylist {
+	min-width: 95%;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+
+}
+
+.container .info {
+	flex-grow: 1;
+
+}
