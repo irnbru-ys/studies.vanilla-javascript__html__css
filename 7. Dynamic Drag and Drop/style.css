@@ -1,0 +1,33 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.output {
+	display: grid;
+	align-items: center;
+}
+
+.box {
+	display: inline-flex;
+	min-height: 80px;
+	border: 1px solid #fadddd;
+	align-items: center;
+	justify-content: center;
+	color: rgb(189, 179, 179);
+}
+
+.item {
+	display: flex;
+	cursor: move;
+	padding: 10px;
+	width: 80px;
+	height: 80px;
+	justify-content: center;
+	align-items: center;
+}
+
+.drag-over {
+	border: 3px dashed green;
+}
