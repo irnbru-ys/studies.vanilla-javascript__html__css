@@ -1,0 +1,24 @@
+.mytext {
+	display: none;
+	padding: 0 0 0 15px;
+	width: 97%;
+	background-color: aliceblue;
+	font-size: 1.2em;
+}
+
+.title {
+	margin: 0;
+	text-align: center;
+	font-size: 3em;
+	background-color: blanchedalmond;
+	border: 1px solid black;
+
+}
+
+.active {
+	display: block; !important
+}
+
+.accordion-item {
+	border: 1px solid black;
+}
