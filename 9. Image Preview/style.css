@@ -1,0 +1,29 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	position: relative;
+}
+
+.thumb {
+	max-height: 100px;
+}
+
+.thumb-popup {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+.thumb-popup-image {
+	max-height: 70%;
+	position: absolute;
+	mix-blend-mode: multiply
+}
