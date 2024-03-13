@@ -103,12 +103,33 @@ function addOutput(event) {
         boo = false;
     }
 
-    if (isNaN(lastOne) && isNaN(value)) {
+    if (isNaN((lastOne) && isNaN(value))) {
         boo = false;
     }
 
+	if (value === '.' && main.value.length <=1) {
+		main.value = '0.';
+		boo = false;
+	}	
+	
+	if ((main.value[0] === '0') && (main.value[1] === '0')) {
+		main.value = value;
+		boo = false;
+	}
+
+	if ((main.value[0] === '0') && (!isNaN(main.value[1]) === true)) {
+		main.value = `${lastOne}${value}`;
+		boo = false;
+	}
+
+	if (lastOne === '.' && isNaN(value)) {
+		main.value = main.value.slice(0, main.value.length - 1);
+		boo = false;
+	}
+
     if (boo && limiter <= 2 && limiter2 <= 1) {
         main.value += value;
+		boo = false;
     }
 }
 
@@ -132,7 +153,7 @@ function evalOutput() {
         step3 = step1.reduce((acc, item) => (acc -= Number(item)));
     } else if (step2 === "/") {
         step1 = main.value.split(/\//);
-        step3 = step1.reduce((acc, item) => (acc /= Number(item)));
+        step3 = step1.reduce((acc, item) => (Number(item)=== 0) ? 0 : (acc /= Number(item)));
     } else if (step2 === "*") {
         step1 = main.value.split(/\*/);
         step3 = step1.reduce((acc, item) => (acc *= Number(item)));
