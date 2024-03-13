@@ -1,0 +1,44 @@
+* {
+	box-sizing: border-box;
+}
+
+.main {
+	width: 100%;
+	line-height: 50px;
+	font-size: 3em;
+	text-align: right;
+}
+
+.container {
+	width: 100%;
+	min-width: 240px;
+}
+
+.btn:not(:first-child) {
+	width: 23%;
+	font-size: 2em;
+	margin: 1%;
+	border-radius:  10px;
+	cursor: pointer;
+}
+
+.btn:first-child {
+	max-width: 48%;
+	min-width: 48%;
+	font-size: 2em;
+	margin: 10px 1%;
+	border-radius:  10px;
+	background-color: red;
+	color: white;
+	cursor: pointer;
+}
+.btn:nth-child(2) {
+	max-width: 48%;
+	min-width: 48%;
+	font-size: 2em;
+	margin: 10px 1%;
+	border-radius:  10px;
+	background-color: red;
+	color: white;
+	cursor: pointer;
+}
